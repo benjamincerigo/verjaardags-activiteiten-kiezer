@@ -9,7 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.4.1"
+    "astro": "^5.4.1",
+    "firebase-tools": "^13.32.0"
   },
   "devDependencies": {
     "prettier": "3.5.2",
