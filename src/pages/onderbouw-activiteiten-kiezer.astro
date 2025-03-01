@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ActivitySelector from "../components/ActivitySelector.astro";
+
+const onderbouw = [
+  "Zit de hele dag naast een vriend(in)",
+  "De jarig mag muziek of radio kiezen als de klas werkt",
+  "Wees de hele dag de hulp van de leerkracht",
+  "Extra tijd vrij spelen binnen",
+  "Extra tijd vrij spelen buiten",
+  "Klassendisco",
+  "Krijg een extra hoofdstuk of kort verhaal voorgelezen",
+  "Speel een spel op het digitale schoolbord",
+  "Een filmpje in de klas kijken",
+  "Kies een spel om met de hele klas te doen: Bijvoorbeeld: stoelendans, bouw samen met de hele klas iets met 'Vlakkies'",
+  "Krijg van iedereen een high five",
+];
+---
+
+<Layout title="Onderbouw Verjaardags Activiteiten">
+  <header class="container">
+    <a href="/">&larr; Terug naar home</a>
+  </header>
+
+  <ActivitySelector
+    title="🎉 Onderbouw Verjaardags Activiteiten Kiezer 🎈"
+    intro="Vul je verjaardag en naam in om te zien welke leuke activiteiten je kunt kiezen voor je verjaardag op school. Je mag er straks twee uitkiezen!"
+    activities={onderbouw}
+    selectionKey="onderbouw-2024-v1"
+  />
+</Layout>
