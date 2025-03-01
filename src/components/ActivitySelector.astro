@@ -1,0 +1,70 @@
+---
+// ActivitySelector.astro
+const { title, intro, activities, selectionKey = "2025-v1" } = Astro.props;
+---
+
+<h1>{title}</h1>
+<p class="intro-text">{intro}</p>
+
+<div class="input-container">
+  <input type="date" id="birthdayDate" required />
+</div>
+<div class="input-container">
+  <input
+    type="text"
+    id="fullName"
+    placeholder="Vul je volledige naam in"
+    required
+  />
+</div>
+<button id="generateButton">Ik ben jarig!</button>
+<div id="result">
+  <p class="celebration">🎊 Gefeliciteerd! 🎊</p>
+  <p>Kies 2 activiteiten uit deze opties:</p>
+  <div id="activities"></div>
+</div>
+
+<script src="../scripts/activityGenerator.js"></script>
+
+<script define:vars={{ activities, selectionKey }} type="module">
+  import {
+    generateActivitySelections,
+    formatDate,
+    hashCode,
+  } from "./src/scripts/activityGenerator.js";
+
+  document
+    .getElementById("generateButton")
+    .addEventListener("click", function () {
+      const birthdayDate = document.getElementById("birthdayDate").value;
+      const fullName = document.getElementById("fullName").value;
+
+      if (!birthdayDate || !fullName) {
+        alert("Vul alsjeblieft beide velden in!");
+        return;
+      }
+
+      // Create a deterministic seed based on name, date and selection key
+      const formattedDate = formatDate(birthdayDate);
+      const seed = hashCode(
+        fullName.toLowerCase() + formattedDate + selectionKey,
+      );
+
+      // Get selections using imported utility function
+      const selected = generateActivitySelections(
+        birthdayDate,
+        fullName,
+        activities,
+      );
+
+      const activitiesDiv = document.getElementById("activities");
+      activitiesDiv.innerHTML = selected
+        .map(
+          (activity, index) =>
+            `<div class="choice">${index + 1}. ${activity}</div>`,
+        )
+        .join("");
+
+      document.getElementById("result").style.display = "block";
+    });
+</script>

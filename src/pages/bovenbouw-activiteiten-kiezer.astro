@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ActivitySelector from "../components/ActivitySelector.astro";
+
+const bovenbouw = [
+  "Zit de hele dag naast een vriend(in)",
+  "De jarige mag muziek of radio kiezen als de klas werkt",
+  "Extra tijd vrij spelen binnen",
+  "Extra tijd vrij spelen buiten",
+  "Klassendisco",
+  "Kies 3 liedjes en dans mee met Just Dance: https://justdancenow.com/",
+  "Krijg een extra hoofdstuk of kort verhaal voorgelezen",
+  "Speel een spel op het digitale schoolbord",
+  "Extra tijd spelen op de chromebooks",
+  "Een filmpje in de klas kijken",
+  "Kies een spel om met de hele klas te doen. Bijvoorbeeld: 'Weerwolven', 'De Brug' of maak je eigen bingo en laat de klas meespelen",
+  "Krijg van iedereen een high five",
+];
+---
+
+<Layout title="Bovenbouw Verjaardags Activiteiten">
+  <a href="/">&larr; Terug naar home</a>
+
+  <ActivitySelector
+    title="🎉 Bovenbouw Verjaardags Activiteiten Kiezer 🎈"
+    intro="Vul je verjaardag en naam in om te zien welke leuke activiteiten je kunt kiezen voor je verjaardag op school. Je mag er straks twee uitkiezen!"
+    activities={bovenbouw}
+    selectionKey="bovenbouw-2024-v1"
+  />
+</Layout>
