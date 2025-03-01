@@ -3,26 +3,27 @@
 const { title, intro, activities, selectionKey = "2025-v1" } = Astro.props;
 ---
 
-<h1>{title}</h1>
-<p class="intro-text">{intro}</p>
-
-<div class="input-container">
-  <input type="date" id="birthdayDate" required />
-</div>
-<div class="input-container">
-  <input
-    type="text"
-    id="fullName"
-    placeholder="Vul je volledige naam in"
-    required
-  />
-</div>
-<button id="generateButton">Ik ben jarig!</button>
-<div id="result">
-  <p class="celebration">🎊 Gefeliciteerd! 🎊</p>
-  <p>Kies 2 activiteiten uit deze opties:</p>
-  <div id="activities"></div>
-</div>
+<main class="container">
+  <h1>{title}</h1>
+  <p class="intro-text">{intro}</p>
+  <div class="input-container">
+    <input type="date" id="birthdayDate" required />
+  </div>
+  <div class="input-container">
+    <input
+      type="text"
+      id="fullName"
+      placeholder="Vul je volledige naam in"
+      required
+    />
+  </div>
+  <button id="generateButton">Ik ben jarig!</button>
+  <div id="result">
+    <p class="celebration">🎊 Gefeliciteerd! 🎊</p>
+    <p>Kies 1 activiteiten uit deze opties:</p>
+    <div id="activities"></div>
+  </div>
+</main>
 
 <script src="../scripts/activityGenerator.js"></script>
 
@@ -68,3 +69,41 @@ const { title, intro, activities, selectionKey = "2025-v1" } = Astro.props;
       document.getElementById("result").style.display = "block";
     });
 </script>
+
+<style>
+  :root {
+    --pico-border-radius: 2rem;
+    --pico-form-element-spacing-vertical: 1rem;
+    --pico-form-element-spacing-horizontal: 1.25rem;
+  }
+  main {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 2rem;
+  }
+  #result {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 5px;
+  }
+  .celebration {
+    text-align: center;
+    color: #2563eb;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+</style>
+
+<style is:global>
+  .choice {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+  }
+</style>
